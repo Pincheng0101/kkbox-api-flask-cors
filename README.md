@@ -2,6 +2,28 @@
 
 KKBOX API Flask CORS for handling Cross Origin Resource Sharing, making cross-origin AJAX possible.
 
+
+## Setting config value
+
+1. Change `setting.cfg` value
+```shell
+CLIENT_ID='<CLIENT_ID>'
+CLIENT_SECRET='<CLIENT_SECRET>'
+ALLOW_CORS_DOMAIN='http://example.com'
+```
+
+2. Set environment variable
+```shell
+export CLIENT_ID='<CLIENT_ID>'
+export CLIENT_SECRET='<CLIENT_SECRET>'
+export ALLOW_CORS_DOMAIN='http://example.com'
+```
+
+3. Set environment variable before run server command
+```shell
+CLIENT_ID='<CLIENT_ID>' CLEINT_SECRET='<CLIENT_SECRET>' ALLOW_CORS_DOMAIN='http://example.com' python server.py
+```
+
 ## Usage
 
 1. Simple run server
