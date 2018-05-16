@@ -17,3 +17,5 @@ gunicorn kkbox_api:app
 # specify address:port
 gunicorn kkbox_api:app -b 127.0.0.1:6666
 ```
+
+3. Deploy to HeroKu
