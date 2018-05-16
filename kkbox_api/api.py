@@ -34,3 +34,13 @@ def tracks(track_id):
     )
 
     return jsonify(result)
+
+@bp.route('/search', methods=['GET'])
+def search():
+    result = g.kkbox.search_fetcher.search(
+        request.args['q'],
+        request.args['type'].split(","),
+        request.args['territory']
+    )
+
+    return jsonify(result)
