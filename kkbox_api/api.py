@@ -53,6 +53,42 @@ def fetchAlbumTrack(album_id):
 
     return jsonify(result)
 
+@bp.route('/artists/<artist_id>', methods=['GET'])
+def fetchArtist(artist_id):
+    result = g.kkbox.artist_fetcher.fetch_artist(
+        artist_id,
+        request.args['territory']
+    )
+
+    return jsonify(result)
+
+@bp.route('/artists/<artist_id>/albums', methods=['GET'])
+def fetchArtistAlbum(artist_id):
+    result = g.kkbox.artist_fetcher.fetch_albums_of_artist(
+        artist_id,
+        request.args['territory']
+    )
+
+    return jsonify(result)
+
+@bp.route('/artists/<artist_id>/top-tracks', methods=['GET'])
+def fetchArtistTopTrack(artist_id):
+    result = g.kkbox.artist_fetcher.fetch_top_tracks_of_artist(
+        artist_id,
+        request.args['territory']
+    )
+
+    return jsonify(result)
+
+@bp.route('/artists/<artist_id>/related-artists', methods=['GET'])
+def fetchArtistRelated(artist_id):
+    result = g.kkbox.artist_fetcher.fetch_related_artists(
+        artist_id,
+        request.args['territory']
+    )
+
+    return jsonify(result)
+
 @bp.route('/search', methods=['GET'])
 def fetchSearchData():
     result = g.kkbox.search_fetcher.search(
