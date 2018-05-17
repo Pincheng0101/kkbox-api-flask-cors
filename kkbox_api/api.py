@@ -27,7 +27,7 @@ def before_request():
         pickle.dump(token, f)
 
 @bp.route('/tracks/<track_id>', methods=['GET'])
-def tracks(track_id):
+def fetchTrack(track_id):
     result = g.kkbox.track_fetcher.fetch_track(
         track_id,
         request.args['territory']
@@ -36,7 +36,7 @@ def tracks(track_id):
     return jsonify(result)
 
 @bp.route('/search', methods=['GET'])
-def search():
+def fetchSearchData():
     result = g.kkbox.search_fetcher.search(
         request.args['q'],
         request.args['type'].split(","),
