@@ -35,6 +35,24 @@ def fetchTrack(track_id):
 
     return jsonify(result)
 
+@bp.route('/albums/<album_id>', methods=['GET'])
+def fetchAlbum(album_id):
+    result = g.kkbox.album_fetcher.fetch_album(
+        album_id,
+        request.args['territory']
+    )
+
+    return jsonify(result)
+
+@bp.route('/albums/<album_id>/tracks', methods=['GET'])
+def fetchAlbumTrack(album_id):
+    result = g.kkbox.album_fetcher.fetch_tracks_in_album(
+        album_id,
+        request.args['territory']
+    )
+
+    return jsonify(result)
+
 @bp.route('/search', methods=['GET'])
 def fetchSearchData():
     result = g.kkbox.search_fetcher.search(
