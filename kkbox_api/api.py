@@ -26,69 +26,6 @@ def before_request():
     with open(TOKEN_FILE, 'wb') as f:
         pickle.dump(token, f)
 
-@bp.route('/tracks/<track_id>', methods=['GET'])
-def fetchTrack(track_id):
-    result = g.kkbox.track_fetcher.fetch_track(
-        track_id,
-        request.args['territory']
-    )
-
-    return jsonify(result)
-
-@bp.route('/albums/<album_id>', methods=['GET'])
-def fetchAlbum(album_id):
-    result = g.kkbox.album_fetcher.fetch_album(
-        album_id,
-        request.args['territory']
-    )
-
-    return jsonify(result)
-
-@bp.route('/albums/<album_id>/tracks', methods=['GET'])
-def fetchAlbumTrack(album_id):
-    result = g.kkbox.album_fetcher.fetch_tracks_in_album(
-        album_id,
-        request.args['territory']
-    )
-
-    return jsonify(result)
-
-@bp.route('/artists/<artist_id>', methods=['GET'])
-def fetchArtist(artist_id):
-    result = g.kkbox.artist_fetcher.fetch_artist(
-        artist_id,
-        request.args['territory']
-    )
-
-    return jsonify(result)
-
-@bp.route('/artists/<artist_id>/albums', methods=['GET'])
-def fetchArtistAlbum(artist_id):
-    result = g.kkbox.artist_fetcher.fetch_albums_of_artist(
-        artist_id,
-        request.args['territory']
-    )
-
-    return jsonify(result)
-
-@bp.route('/artists/<artist_id>/top-tracks', methods=['GET'])
-def fetchArtistTopTrack(artist_id):
-    result = g.kkbox.artist_fetcher.fetch_top_tracks_of_artist(
-        artist_id,
-        request.args['territory']
-    )
-
-    return jsonify(result)
-
-@bp.route('/artists/<artist_id>/related-artists', methods=['GET'])
-def fetchArtistRelated(artist_id):
-    result = g.kkbox.artist_fetcher.fetch_related_artists(
-        artist_id,
-        request.args['territory']
-    )
-
-    return jsonify(result)
-
 @bp.route('/search', methods=['GET'])
 def fetchSearchData():
     result = g.kkbox.search_fetcher.search(
