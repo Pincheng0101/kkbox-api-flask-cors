@@ -2,6 +2,9 @@
 
 KKBOX API Flask CORS for handling Cross Origin Resource Sharing, making cross-origin AJAX possible.
 
+This is a simple demo at https://kk-search.herokuapp.com/search?q=Mayday&type=track&territory=TW.
+
+> Demo only provide search api.
 
 ## Setting config value
 
