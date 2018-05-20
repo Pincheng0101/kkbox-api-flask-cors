@@ -89,6 +89,24 @@ def fetchArtistRelated(artist_id):
 
     return jsonify(result)
 
+@bp.route('/shared-playlists/<playlist_id>', methods=['GET'])
+def fetchSharedPlayList(playlist_id):
+    result = g.kkbox.shared_playlist_fetcher.fetch_shared_playlist(
+        playlist_id,
+        request.args['territory']
+    )
+
+    return jsonify(result)
+
+@bp.route('/shared-playlists/<playlist_id>/tracks', methods=['GET'])
+def fetchSharedPlayList(playlist_id):
+    result = g.kkbox.shared_playlist_fetcher.fetch_shared_playlist(
+        playlist_id,
+        request.args['territory']
+    )
+
+    return jsonify(result)
+
 @bp.route('/search', methods=['GET'])
 def fetchSearchData():
     result = g.kkbox.search_fetcher.search(
