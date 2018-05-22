@@ -107,6 +107,32 @@ def fetchSharedPlayList(playlist_id):
 
     return jsonify(result)
 
+@bp.route('/featured-playlist-categories', methods=['GET'])
+def fetchFeaturedCategory():
+    result = g.kkbox.feature_playlist_category_fetcher.fetch_categories_of_feature_playlist(
+        request.args['territory']
+    )
+
+    return jsonify(result)
+
+@bp.route('/featured-playlist-categories/<category_id>', methods=['GET'])
+def fetchSingleFeaturedCategory(category_id):
+    result = g.kkbox.feature_playlist_category_fetcher.fetch_feature_playlist_by_category(
+        category_id,
+        request.args['territory']
+    )
+
+    return jsonify(result)
+
+@bp.route('/featured-playlist-categories/<category_id>/playlists', methods=['GET'])
+def fetchFeaturedCategoryPlayList(category_id):
+    result = g.kkbox.feature_playlist_category_fetcher.fetch_playlists_of_feature_playlist_category(
+        category_id,
+        request.args['territory']
+    )
+
+    return jsonify(result)
+
 @bp.route('/search', methods=['GET'])
 def fetchSearchData():
     result = g.kkbox.search_fetcher.search(
